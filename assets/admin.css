@@ -1,0 +1,10 @@
+/* WP Member Image Lock — Admin settings page styles */
+
+.wmil-settings-wrap h1 {
+    margin-bottom: 1.5rem;
+}
+
+.wmil-settings-wrap .form-table td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
