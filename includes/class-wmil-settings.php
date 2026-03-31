@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  */
 class WMIL_Settings {
 
-    const PAGE_SLUG = 'wp-member-image-lock';
+    const PAGE_SLUG = 'member-image-lock';
     const OPTION_GROUP = 'wmil_options';
 
     public function init(): void {
@@ -27,8 +27,8 @@ class WMIL_Settings {
      */
     public function register_menu(): void {
         add_options_page(
-            __( 'Member Image Lock', 'wp-member-image-lock' ),
-            __( 'Member Image Lock', 'wp-member-image-lock' ),
+            __( 'Member Image Lock', 'member-image-lock' ),
+            __( 'Member Image Lock', 'member-image-lock' ),
             'manage_options',
             self::PAGE_SLUG,
             array( $this, 'render_page' )
@@ -45,7 +45,7 @@ class WMIL_Settings {
             array(
                 'type'              => 'string',
                 'sanitize_callback' => 'sanitize_textarea_field',
-                'default'           => __( 'Please log in to view this image.', 'wp-member-image-lock' ),
+                'default'           => __( 'Please log in to view this image.', 'member-image-lock' ),
             )
         );
 
@@ -65,7 +65,7 @@ class WMIL_Settings {
             array(
                 'type'              => 'string',
                 'sanitize_callback' => 'sanitize_text_field',
-                'default'           => __( 'Log in', 'wp-member-image-lock' ),
+                'default'           => __( 'Log in', 'member-image-lock' ),
             )
         );
 
@@ -82,14 +82,14 @@ class WMIL_Settings {
         // Section: Placeholder
         add_settings_section(
             'wmil_section_placeholder',
-            __( 'Placeholder Settings', 'wp-member-image-lock' ),
+            __( 'Placeholder Settings', 'member-image-lock' ),
             '__return_false',
             self::PAGE_SLUG
         );
 
         add_settings_field(
             WMIL_OPT_MESSAGE,
-            __( 'Placeholder Message', 'wp-member-image-lock' ),
+            __( 'Placeholder Message', 'member-image-lock' ),
             array( $this, 'field_message' ),
             self::PAGE_SLUG,
             'wmil_section_placeholder'
@@ -97,7 +97,7 @@ class WMIL_Settings {
 
         add_settings_field(
             WMIL_OPT_SHOW_LOGIN,
-            __( 'Show Login Link', 'wp-member-image-lock' ),
+            __( 'Show Login Link', 'member-image-lock' ),
             array( $this, 'field_show_login' ),
             self::PAGE_SLUG,
             'wmil_section_placeholder'
@@ -105,7 +105,7 @@ class WMIL_Settings {
 
         add_settings_field(
             WMIL_OPT_LOGIN_TEXT,
-            __( 'Login Link Text', 'wp-member-image-lock' ),
+            __( 'Login Link Text', 'member-image-lock' ),
             array( $this, 'field_login_text' ),
             self::PAGE_SLUG,
             'wmil_section_placeholder'
@@ -114,14 +114,14 @@ class WMIL_Settings {
         // Section: Post Types
         add_settings_section(
             'wmil_section_post_types',
-            __( 'Apply To', 'wp-member-image-lock' ),
+            __( 'Apply To', 'member-image-lock' ),
             array( $this, 'section_post_types_description' ),
             self::PAGE_SLUG
         );
 
         add_settings_field(
             WMIL_OPT_POST_TYPES,
-            __( 'Post Types', 'wp-member-image-lock' ),
+            __( 'Post Types', 'member-image-lock' ),
             array( $this, 'field_post_types' ),
             self::PAGE_SLUG,
             'wmil_section_post_types'
@@ -133,7 +133,7 @@ class WMIL_Settings {
      */
     public function render_page(): void {
         if ( ! current_user_can( 'manage_options' ) ) {
-            wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wp-member-image-lock' ) );
+            wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'member-image-lock' ) );
         }
         ?>
         <div class="wrap wmil-settings-wrap">
@@ -141,7 +141,7 @@ class WMIL_Settings {
 
             <?php if ( isset( $_GET['settings-updated'] ) ) : // phpcs:ignore WordPress.Security.NonceVerification ?>
                 <div class="notice notice-success is-dismissible">
-                    <p><?php esc_html_e( 'Settings saved.', 'wp-member-image-lock' ); ?></p>
+                    <p><?php esc_html_e( 'Settings saved.', 'member-image-lock' ); ?></p>
                 </div>
             <?php endif; ?>
 
@@ -177,7 +177,7 @@ class WMIL_Settings {
     // ── Field renderers ───────────────────────────────────────────────────────
 
     public function field_message(): void {
-        $value = (string) get_option( WMIL_OPT_MESSAGE, __( 'Please log in to view this image.', 'wp-member-image-lock' ) );
+        $value = (string) get_option( WMIL_OPT_MESSAGE, __( 'Please log in to view this image.', 'member-image-lock' ) );
         ?>
         <textarea
             name="<?php echo esc_attr( WMIL_OPT_MESSAGE ); ?>"
@@ -186,7 +186,7 @@ class WMIL_Settings {
             cols="50"
             class="large-text"
         ><?php echo esc_textarea( $value ); ?></textarea>
-        <p class="description"><?php esc_html_e( 'Text shown to visitors in place of each hidden image.', 'wp-member-image-lock' ); ?></p>
+        <p class="description"><?php esc_html_e( 'Text shown to visitors in place of each hidden image.', 'member-image-lock' ); ?></p>
         <?php
     }
 
@@ -200,13 +200,13 @@ class WMIL_Settings {
                 value="1"
                 <?php checked( $checked ); ?>
             />
-            <?php esc_html_e( 'Show a login link below the placeholder message', 'wp-member-image-lock' ); ?>
+            <?php esc_html_e( 'Show a login link below the placeholder message', 'member-image-lock' ); ?>
         </label>
         <?php
     }
 
     public function field_login_text(): void {
-        $value = (string) get_option( WMIL_OPT_LOGIN_TEXT, __( 'Log in', 'wp-member-image-lock' ) );
+        $value = (string) get_option( WMIL_OPT_LOGIN_TEXT, __( 'Log in', 'member-image-lock' ) );
         ?>
         <input
             type="text"
@@ -215,12 +215,12 @@ class WMIL_Settings {
             value="<?php echo esc_attr( $value ); ?>"
             class="regular-text"
         />
-        <p class="description"><?php esc_html_e( 'The clickable text of the login link.', 'wp-member-image-lock' ); ?></p>
+        <p class="description"><?php esc_html_e( 'The clickable text of the login link.', 'member-image-lock' ); ?></p>
         <?php
     }
 
     public function section_post_types_description(): void {
-        echo '<p>' . esc_html__( 'Select which post types should have images hidden for non-logged-in visitors.', 'wp-member-image-lock' ) . '</p>';
+        echo '<p>' . esc_html__( 'Select which post types should have images hidden for non-logged-in visitors.', 'member-image-lock' ) . '</p>';
     }
 
     public function field_post_types(): void {

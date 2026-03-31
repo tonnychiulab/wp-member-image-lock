@@ -1,8 +1,8 @@
-=== WP Member Image Lock ===
+=== Member Image Lock ===
 Contributors:      yourname
 Tags:              members, images, login, content protection, access control
 Requires at least: 6.0
-Tested up to:      6.7
+Tested up to:      6.9
 Requires PHP:      7.4
 Stable tag:        1.0.0
 License:           GPL-2.0-or-later
@@ -12,7 +12,7 @@ Hide images from non-logged-in visitors. All other content remains visible.
 
 == Description ==
 
-WP Member Image Lock lets you protect images on your WordPress site so that only logged-in members can view them. Non-logged-in visitors will see a placeholder with a login prompt in place of each image, while all other content (text, headings, links) remains fully visible.
+Member Image Lock lets you protect images on your WordPress site so that only logged-in members can view them. Non-logged-in visitors will see a placeholder with a login prompt in place of each image, while all other content (text, headings, links) remains fully visible.
 
 **Features:**
 

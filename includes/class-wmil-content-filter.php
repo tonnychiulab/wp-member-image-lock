@@ -111,9 +111,9 @@ class WMIL_Content_Filter {
      * @return string
      */
     private function render_placeholder(): string {
-        $message    = (string) get_option( WMIL_OPT_MESSAGE, __( 'Please log in to view this image.', 'wp-member-image-lock' ) );
+        $message    = (string) get_option( WMIL_OPT_MESSAGE, __( 'Please log in to view this image.', 'member-image-lock' ) );
         $show_login = (bool) get_option( WMIL_OPT_SHOW_LOGIN, true );
-        $login_text = (string) get_option( WMIL_OPT_LOGIN_TEXT, __( 'Log in', 'wp-member-image-lock' ) );
+        $login_text = (string) get_option( WMIL_OPT_LOGIN_TEXT, __( 'Log in', 'member-image-lock' ) );
         $login_url  = wp_login_url( get_permalink() );
 
         ob_start();

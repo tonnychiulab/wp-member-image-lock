@@ -1,17 +1,17 @@
 <?php
 /**
- * Plugin Name:       WP Member Image Lock
- * Plugin URI:        https://example.com/wp-member-image-lock
+ * Plugin Name:       Member Image Lock
+ * Plugin URI:        https://github.com/tonnychiulab/wp-member-image-lock
  * Description:       Hide images from non-logged-in visitors. All other content remains visible.
  * Version:           1.0.0
  * Author:            Your Name
- * Author URI:        https://example.com
+ * Author URI:        https://github.com/tonnychiulab
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       wp-member-image-lock
+ * Text Domain:       member-image-lock
  * Domain Path:       /languages
  * Requires at least: 6.0
- * Tested up to:      6.7
+ * Tested up to:      6.9
  * Requires PHP:      7.4
  */
 
@@ -34,12 +34,12 @@ register_activation_hook( __FILE__, 'wmil_activate' );
 
 function wmil_activate(): void {
     if ( ! current_user_can( 'activate_plugins' ) ) {
-        wp_die( esc_html__( 'Permission denied.', 'wp-member-image-lock' ) );
+        wp_die( esc_html__( 'Permission denied.', 'member-image-lock' ) );
     }
     // Set default options on first activation.
-    add_option( WMIL_OPT_MESSAGE,    __( 'Please log in to view this image.', 'wp-member-image-lock' ) );
+    add_option( WMIL_OPT_MESSAGE,    __( 'Please log in to view this image.', 'member-image-lock' ) );
     add_option( WMIL_OPT_SHOW_LOGIN, '1' );
-    add_option( WMIL_OPT_LOGIN_TEXT, __( 'Log in', 'wp-member-image-lock' ) );
+    add_option( WMIL_OPT_LOGIN_TEXT, __( 'Log in', 'member-image-lock' ) );
     add_option( WMIL_OPT_POST_TYPES, array( 'post', 'page' ) );
 }
 
