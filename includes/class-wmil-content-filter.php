@@ -51,18 +51,24 @@ class WMIL_Content_Filter {
         }
 
         // Replace <figure> blocks that contain an <img> (Gutenberg image blocks).
-        $content = preg_replace_callback(
+        $result = preg_replace_callback(
             '/<figure\b[^>]*>.*?<img\b[^>]*>.*?<\/figure>/is',
             array( $this, 'replace_with_placeholder' ),
             $content
         );
+        if ( null !== $result ) {
+            $content = $result;
+        }
 
         // Replace any remaining bare <img> tags not inside a <figure>.
-        $content = preg_replace_callback(
+        $result = preg_replace_callback(
             '/<img\b[^>]*>/i',
             array( $this, 'replace_with_placeholder' ),
             $content
         );
+        if ( null !== $result ) {
+            $content = $result;
+        }
 
         return $content;
     }

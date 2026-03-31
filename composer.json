@@ -1,0 +1,9 @@
+{
+    "name": "wmil/wp-member-image-lock",
+    "description": "WP Member Image Lock plugin tests",
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "brain/monkey": "^2.6",
+        "mockery/mockery": "^1.5"
+    }
+}

@@ -177,7 +177,7 @@ class WMIL_Settings {
     // ── Field renderers ───────────────────────────────────────────────────────
 
     public function field_message(): void {
-        $value = (string) get_option( WMIL_OPT_MESSAGE );
+        $value = (string) get_option( WMIL_OPT_MESSAGE, __( 'Please log in to view this image.', 'wp-member-image-lock' ) );
         ?>
         <textarea
             name="<?php echo esc_attr( WMIL_OPT_MESSAGE ); ?>"
@@ -206,7 +206,7 @@ class WMIL_Settings {
     }
 
     public function field_login_text(): void {
-        $value = (string) get_option( WMIL_OPT_LOGIN_TEXT );
+        $value = (string) get_option( WMIL_OPT_LOGIN_TEXT, __( 'Log in', 'wp-member-image-lock' ) );
         ?>
         <input
             type="text"
